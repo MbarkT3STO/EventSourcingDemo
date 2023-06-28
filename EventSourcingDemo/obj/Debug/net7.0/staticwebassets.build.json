@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "x3k+dJS+mkCXUMicvWPevhlAuIpKZ+6RahymxWZWnmA=",
+  "Source": "EventSourcingDemo",
+  "BasePath": "_content/EventSourcingDemo",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
