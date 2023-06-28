@@ -1,5 +1,6 @@
 using EventSourcingDemo.Data;
 using EventSourcingDemo.Data.AuditLogContext;
+using EventSourcingDemo.Services;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,9 @@ builder.Services.AddDbContext<AuditLogDbContext>(options =>
 {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("AuditLogDbConnection"));
 });
+
+// Register Event Replay Service
+builder.Services.AddScoped<EventReplayService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

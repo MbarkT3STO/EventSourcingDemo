@@ -12,6 +12,7 @@ namespace EventSourcingDemo.Events
 		public int ProductId { get; set; }
 		public string Name { get; set; }
 		public decimal Price { get; set; }
+		public bool IsReplay { get; set; }
 	}
 
 	public class ProductCreatedEventHandler: INotificationHandler<ProductCreatedEvent>
@@ -36,6 +37,10 @@ namespace EventSourcingDemo.Events
 
 			_dbContext.Products.Add(productReadModel);
 			await _dbContext.SaveChangesAsync(cancellationToken);
+			
+			// If this is a replay, we don't want to add another Audit Log Event
+			if (notification.IsReplay)
+				return;
 			
 			// Audit Log Event for the Audit Log side
 			var auditLogEvent = new AuditLogEvent
